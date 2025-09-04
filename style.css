@@ -1,0 +1,44 @@
+body {
+    background-color: #113881;
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.layout{
+    flex: 1;
+    display: flex;
+}
+aside{
+    color: skyblue;
+    margin: 7px;
+    padding: 17px;
+    background-color: rgb(31, 69, 139);
+    width: 10%;
+    border-radius: 7px;
+    text-align: center;
+}
+main{
+    color: skyblue;
+    margin: 7px;
+    padding: 17px;
+    flex: 1;
+    text-align: center;
+}
+.dock{
+    background-color: rgb(31, 74, 139);
+    border-radius: 7px;
+}
+.di{
+    display: flex;
+    justify-content: center;
+}
+li{
+    list-style: none;
+    padding: 10px;
+}
+ul{
+    margin: 0px;
+    padding: 0px;
+}
