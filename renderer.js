@@ -42,14 +42,34 @@ function renderNotesList(notes) {
     notesList.innerHTML = '';
     for (const note of notes) {
         const li = document.createElement('li');
-        li.textContent = note.title?.trim() ? note.title : 'untitled';
-        notesList.appendChild(li);
-
-        li.addEventListener('click', async () => {
+        const span = document.createElement('span');
+        span.textContent = note.title?.trim() ? note.title : 'untitled';
+        span.addEventListener('click', async () => {
             currentNoteId = note.id;
             title.textContent = note.title;
             content.textContent = note.content;
         });
+
+        const delBtn = document.createElement('button');
+        delBtn.textContent = '🗑️';
+        delBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            await window.electronAPI.deleteNote(note.id);
+            const notes = await window.electronAPI.loadNotes();
+            renderNotesList(notes);
+
+            if (currentNoteId === note.id) {
+                currentNoteId = null;
+                title.textContent = '';
+                content.textContent = '';
+                title.focus();
+            }
+        });
+
+        li.appendChild(span);
+        li.appendChild(delBtn);
+        notesList.appendChild(li);
+
     }
 }
 

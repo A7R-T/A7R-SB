@@ -1,6 +1,6 @@
 //main.js
 const {app , BrowserWindow, ipcMain} = require('electron');
-const {saveNote, loadNotes, updateNote} = require('./database.js')
+const {saveNote, loadNotes, updateNote, deleteNote } = require('./database.js')
 
 function CreateWindow () {
     const win = new BrowserWindow({
@@ -24,6 +24,10 @@ ipcMain.handle('load-notes', () => {return loadNotes();});
 
 ipcMain.handle('update-note', (event, data) => {
     updateNote(data.id, data.title, data.content);
+});
+
+ipcMain.handle('delete-note', (event, id) => {
+    deleteNote(id);
 });
 
 app.on('window-all-closed', () => {if (process.platform !== 'darwin') app.quit()})

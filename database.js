@@ -28,4 +28,9 @@ function updateNote(id, title, content) {
     stmt.run(title, content, id);
 }
 
-module.exports = { saveNote, loadNotes, updateNote };
+function deleteNote(id) {
+    const stmt = db.prepare(`DELETE FROM notes WHERE id = ?`);
+    stmt.run(id);
+}
+
+module.exports = { saveNote, loadNotes, updateNote, deleteNote };
