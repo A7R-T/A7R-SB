@@ -1,5 +1,5 @@
 body {
-    background-color: #113881;
+    background-color: #061229;
     margin: 0;
     font-family: sans-serif;
     display: flex;
@@ -10,24 +10,51 @@ body {
     flex: 1;
     display: flex;
 }
-aside{
+aside.left, aside.right{
+    position: fixed;
+    top: 0;
+    bottom: 0;  
     color: skyblue;
     margin: 7px;
     padding: 17px;
-    background-color: rgb(31, 69, 139);
-    width: 10%;
+    background-color: rgb(21, 31, 49);
+    width: 220px;
     border-radius: 7px;
     text-align: center;
+    transition: transform 0.3s ease;
+}
+aside.left {
+    left: 0;
+  transform: translateX(-100%);
+}
+
+aside.right {
+    right: 0;
+  transform: translateX(100%);
+}
+aside.left:hover {
+  transform: translateX(0);
+}
+
+aside.right:hover {
+  transform: translateX(0);
+}
+.layout.pinned aside.left { transform: translateX(0); }
+.layout.pinned aside.right { transform: translateX(0); }
+.layout.pinned main {
+  margin-left: 270px;   /* leave space for left sidebar */
+  margin-right: 270px;  /* leave space for right sidebar */
 }
 main{
     color: skyblue;
     margin: 7px;
     padding: 17px;
     flex: 1;
+    width: 100%;
     text-align: center;
 }
 .dock{
-    background-color: rgb(31, 74, 139);
+    background-color: rgb(21, 31, 49);
     border-radius: 7px;
 }
 .di{
@@ -42,3 +69,100 @@ ul{
     margin: 0px;
     padding: 0px;
 }
+
+#notes-list li.active{
+    background-color: skyblue;
+    color: rgb(21, 31, 49);
+    font-weight: bold;
+    border-radius: 7px;
+}
+
+#notes-list li{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid skyblue;
+    font-size: 14px;
+    border-radius: 7px;
+    margin: 7px;
+    padding: 7px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    transition: color 0.2s ease;
+}
+#notes-list li:hover{
+    background-color: rgb(135, 207, 235);
+    color: rgb(21, 31, 49);
+}
+
+#new-note {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 6px;
+  border: 1px solid skyblue;
+  color: skyblue;
+  background-color: rgb(21, 31, 49);
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  transition: color 0.2s ease;
+}
+#new-note-left {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 6px;
+  border: 1px solid skyblue;
+  color: skyblue;
+  background-color: rgb(21, 31, 49);
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+#new-note:hover {
+  background-color: skyblue;
+  color: rgb(21, 31, 49);
+}
+#new-note-left:hover {
+  background-color: skyblue;
+  color: rgb(21, 31, 49);
+}
+#notes-list li button {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+[contenteditable="true"]:focus {
+  outline: none;
+  border: none;
+}
+#toggle-sidebars {
+  padding: 8px 16px;
+  border: skyblue solid 1px;
+  border-radius: 6px;
+  background-color: rgb(21, 31, 49);
+  color: skyblue;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+#toggle-sidebars:hover {
+  background-color: skyblue;
+  color:rgb(21, 31, 49);
+}
+html, body, .layout { overflow-x: hidden; }
