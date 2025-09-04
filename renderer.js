@@ -2,6 +2,14 @@
 const title = document.getElementById('note-title');
 const content = document.getElementById('note-content');
 const notesList = document.getElementById('notes-list');
+const newNoteBtn = document.getElementById('new-note');
+
+newNoteBtn.addEventListener('click', async () => {
+    currentNoteId = null;
+    title.textContent = '';
+    content.textContent = '';
+    title.focus();
+});
 let currentNoteId = null;
 let saveTimeout = null;
 
